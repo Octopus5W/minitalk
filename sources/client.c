@@ -1,27 +1,3 @@
-#include "../include/minitalk.h"
-#include <stdio.h>
-
-int ft_atoi(const char *s)
-{
-    int nb;
-
-    nb = 0;
-    if (!s || !*s)
-        return(-1);
-    while ((*s >= 7 && *s <= 13) || *s == 32)
-        s++;
-    while (*s >= '0' && *s <= '9')
-    {
-        nb = nb * 10 + (*s - 48);
-        s++;
-    }
-    printf("<%d>", nb);
-    if(!*s)
-        return (nb);
-    else
-        return (-1);
-}
-
 // int    send_sig_char(int c, int pid)
 // {
 //     int bit;
@@ -41,6 +17,29 @@ int ft_atoi(const char *s)
 //     write(1,"\n",1);
 //     return (c);
 // }
+#include "../include/minitalk.h"
+#include <stdio.h>
+
+int ft_atoi(const char *s)
+{
+    int nb;
+
+    nb = 0;
+    if (!s || !*s)
+        return(-1);
+    while ((*s >= 7 && *s <= 13) || *s == 32)
+        s++;
+    while (*s >= '0' && *s <= '9')
+    {
+        nb = nb * 10 + (*s - 48);
+        s++;
+    }
+    if(!*s)
+        return (nb);
+    else
+        return (-1);
+}
+
 int    send_sig_char(int c, int pid)
 {
     int bit;
@@ -57,6 +56,7 @@ int    send_sig_char(int c, int pid)
             return (-1);
         usleep(500);
     }
+        usleep(500);
     return (c);
 }
 

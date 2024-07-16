@@ -20,18 +20,17 @@
 // }
 void bit_handler(int SIG)
 {
-    static char binary = 0;
-    static char bytes = 8;
+    static int binary = 0;
+    static char bit = 7;
     // binary = binary * 2 + bit;
-    binary <<= 1;
     if(SIG == SIGUSR2)
-        binary = binary | 1;
-    if (--bytes == 0)
+        binary |= (1 << bit);
+    if (bit-- == 0)
     {
         write(1, &binary, 1);
         if (binary == 0)
             write(1, "\n", 1);
-        bytes = 8;
+        bit = 7;
         binary = 0;
     }
 }
