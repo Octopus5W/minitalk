@@ -1,22 +1,3 @@
-// int    send_sig_char(int c, int pid)
-// {
-//     int bit;
-
-//     bit = 8;
-//     pid += 0;
-//     while (bit-- > 0)
-//     {
-//         if (c & (1 << bit))
-//             write(1,"1",1);
-//         else
-//             write(1,"0",1);
-//         usleep(200);
-//     }
-//     write(1,"\n",1);
-//     write(1,&c,1);
-//     write(1,"\n",1);
-//     return (c);
-// }
 #include "../include/minitalk.h"
 #include <stdio.h>
 
@@ -54,9 +35,8 @@ int    send_sig_char(int c, int pid)
             check = kill(pid, SIGUSR1);
         if (check == -1)
             return (-1);
-        usleep(500);
+        usleep(550);
     }
-        usleep(500);
     return (c);
 }
 
@@ -67,13 +47,16 @@ int main(int ac, char *av[])
     int i;
 
     i = 0;
-    if (ac == 3 && (pid = ft_atoi(av[1])) > 0)
+    pid = ft_atoi(av[1]);
+    if (ac == 3 && pid > 0)
     {
         if (!(av[2][0]))
             return(write(2, "Tu n'envoies pas de message.\n", 29), -1);
-        while ((check = send_sig_char(av[2][i++], pid)) > 0);
+        check = send_sig_char(av[2][i++], pid);
+        while (check > 0)
+            check = send_sig_char(av[2][i++], pid);
         if (check == 0)
-            return(/*write(2, "Message envoyé!\n", 16)*/0);
+            return(write(2, "Message envoyé!\n", 16), 0);
         else
             return(write(2, "Une erreur est survenue pendant l'envoie du message.\n", 53), -1);
     }
