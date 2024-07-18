@@ -1,9 +1,8 @@
 #ifndef MINITALK_H
 # define MINITALK_H
 
-#include <unistd.h>
-#include <signal.h>
-#include <stdlib.h>
-#include "../printf/libft.h"
+# include "../printf/libft.h"
+# include <signal.h>
+# include <unistd.h>
 
 #endif
