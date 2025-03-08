@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hdelbecq <hdelbecq@student.s19.be>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/18 17:36:15 by hdelbecq          #+#    #+#             */
+/*   Updated: 2025/03/08 21:58:18 by hdelbecq         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/minitalk.h"
 
 int	ft_atoi(const char *s)
@@ -20,7 +32,7 @@ int	ft_atoi(const char *s)
 		return (-1);
 }
 
-int	send_sig_char(int c, int pid)
+int	send_sig_char(unsigned char c, int pid)
 {
 	int	bit;
 	int	check;
